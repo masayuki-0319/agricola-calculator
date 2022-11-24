@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
+    "@types/jest": "^29.2.3",
     "@types/node": "^16.18.3",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
@@ -24,7 +24,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*",
-    "lint:fix": "eslint --fix 'src/**/*'"
+    "lint:fix": "eslint --fix 'src/**/*'",
+    "test-jest": "jest"
   },
   "eslintConfig": {
     "extends": [
@@ -57,9 +58,12 @@
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "prettier": "^2.8.0"
+    "jest": "^29.3.1",
+    "prettier": "^2.8.0",
+    "ts-jest": "^29.0.3"
   },
   "eslintIgnore": [
-    "/.eslintrc.js"
+    "/.eslintrc.js",
+    "/jest.config.js"
   ]
 }
