@@ -10,8 +10,7 @@ module.exports = {
     'prettier',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
-    // 'plugin:import/recommended',
-    // 'plugin:import/typescript',
+    'plugin:import/typescript',
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
@@ -26,6 +25,7 @@ module.exports = {
     '@typescript-eslint',
     'unused-imports',
     'prettier',
+    'import',
   ],
   rules: {
     //
@@ -100,42 +100,43 @@ module.exports = {
     //
     //  Plugin import
     //
-    // 'import/order': [
-    //   'error',
-    //   {
-    //     groups: [
-    //       'builtin',
-    //       'external',
-    //       'parent',
-    //       'sibling',
-    //       'object',
-    //       'type',
-    //       'index',
-    //     ],
-    //     'newlines-between': 'always',
-    //     pathGroupsExcludedImportTypes: ['react', 'builtin'],
-    //     alphabetize: { order: 'asc', caseInsensitive: true },
-    //     pathGroups: [
-    //       {
-    //         pattern: '{react,react-dom/**,react-router-dom}',
-    //         group: 'builtin',
-    //         position: 'before',
-    //       },
-    //       {
-    //         pattern: '@src/**',
-    //         group: 'parent',
-    //         position: 'before',
-    //       },
-    //     ],
-    //   },
-    // ],
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'parent',
+          'sibling',
+          'object',
+          'type',
+          'index',
+        ],
+        'newlines-between': 'always',
+        pathGroupsExcludedImportTypes: ['react', 'builtin'],
+        alphabetize: { order: 'asc', caseInsensitive: true },
+        pathGroups: [
+          {
+            pattern: '{react,react-dom/**,react-router-dom}',
+            group: 'builtin',
+            position: 'before',
+          },
+          {
+            pattern: '@src/**',
+            group: 'parent',
+            position: 'before',
+          },
+        ],
+      },
+    ],
   },
   settings: {
-    // 'import/resolver': {
-    //   node: {
-    //     extensions: ['.ts', '.tsx'],
-    //   },
-    //   typescript: {},
-    // },
+    react: {
+      createClass: 'createReactClass', // Regex for Component Factory to use,
+      pragma: 'React', // Pragma to use, default to "React"
+      fragment: 'Fragment', // Fragment to use (may be a property of <pragma>), default to "Fragment"
+      version: 'detect', // React version. "detect" automatically picks the version you have installed.
+      flowVersion: '0.53', // Flow version
+    },
   },
 };
