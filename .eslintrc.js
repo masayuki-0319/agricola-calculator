@@ -4,13 +4,14 @@ module.exports = {
     es2021: true,
   },
   extends: [
+    'eslint:recommended',
     'plugin:react/recommended',
     'standard-with-typescript',
     'prettier',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
+    // 'plugin:import/recommended',
+    // 'plugin:import/typescript',
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
@@ -99,34 +100,42 @@ module.exports = {
     //
     //  Plugin import
     //
-    'import/order': [
-      'error',
-      {
-        groups: [
-          'builtin',
-          'external',
-          'parent',
-          'sibling',
-          'object',
-          'type',
-          'index',
-        ],
-        'newlines-between': 'always',
-        pathGroupsExcludedImportTypes: ['react', 'builtin'],
-        alphabetize: { order: 'asc', caseInsensitive: true },
-        pathGroups: [
-          {
-            pattern: '{react,react-dom/**,react-router-dom}',
-            group: 'builtin',
-            position: 'before',
-          },
-          {
-            pattern: '@src/**',
-            group: 'parent',
-            position: 'before',
-          },
-        ],
-      },
-    ],
+    // 'import/order': [
+    //   'error',
+    //   {
+    //     groups: [
+    //       'builtin',
+    //       'external',
+    //       'parent',
+    //       'sibling',
+    //       'object',
+    //       'type',
+    //       'index',
+    //     ],
+    //     'newlines-between': 'always',
+    //     pathGroupsExcludedImportTypes: ['react', 'builtin'],
+    //     alphabetize: { order: 'asc', caseInsensitive: true },
+    //     pathGroups: [
+    //       {
+    //         pattern: '{react,react-dom/**,react-router-dom}',
+    //         group: 'builtin',
+    //         position: 'before',
+    //       },
+    //       {
+    //         pattern: '@src/**',
+    //         group: 'parent',
+    //         position: 'before',
+    //       },
+    //     ],
+    //   },
+    // ],
+  },
+  settings: {
+    // 'import/resolver': {
+    //   node: {
+    //     extensions: ['.ts', '.tsx'],
+    //   },
+    //   typescript: {},
+    // },
   },
 };

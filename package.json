@@ -15,6 +15,7 @@
     "react-dom": "^18.2.0",
     "react-native-web": "^0.18.10",
     "react-scripts": "5.0.1",
+    "tamagui": "^1.0.1-beta.220",
     "typescript": "*",
     "web-vitals": "^2.1.4"
   },
@@ -23,8 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*",
-    "lint:fix": "eslint --fix 'src/**/*'",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}'",
     "test-jest": "jest"
   },
   "eslintConfig": {
@@ -51,6 +52,7 @@
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -64,6 +66,7 @@
   },
   "eslintIgnore": [
     "/.eslintrc.js",
-    "/jest.config.js"
+    "/jest.config.js",
+    "tamagui.config.js"
   ]
 }

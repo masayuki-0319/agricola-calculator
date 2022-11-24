@@ -1,4 +1,4 @@
-export type ScoreCoefficient = {
+export interface ScoreCoefficient {
   score1: {
     resultCount: number;
     scorePoint: number;
@@ -19,7 +19,7 @@ export type ScoreCoefficient = {
     resultCount: number;
     scorePoint: number;
   };
-};
+}
 
 export type CoefficientResource = [number, number, number, number, number];
 

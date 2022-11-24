@@ -4,7 +4,7 @@ import { validateNumberTestModule } from './validateNumberTestModule';
 export function baseScoreTest(
   testFunction: (args: number) => number,
   fineTestCases: TestCase[]
-) {
+): void {
   describe('[Fine]', () => {
     return singleParametersTest(testFunction, fineTestCases);
   });

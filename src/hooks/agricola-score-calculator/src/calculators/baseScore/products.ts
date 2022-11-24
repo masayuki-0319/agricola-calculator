@@ -20,20 +20,20 @@ const PRODUCTS_COEFFICIENT: { [P in Product]: ScoreCoefficient } = {
   cattle: scoreGenerator(CATTLE_SCORE_UNIT),
 };
 
-function _calculateProducts(resultCount: number, product: Product) {
+function _calculateProducts(resultCount: number, product: Product): number {
   validateNumber(resultCount);
   const coefficient = PRODUCTS_COEFFICIENT[product];
 
-  if (resultCount >= coefficient['score5']['resultCount']) {
-    return coefficient['score5']['scorePoint'];
-  } else if (resultCount >= coefficient['score4']['resultCount']) {
-    return coefficient['score4']['scorePoint'];
-  } else if (resultCount >= coefficient['score3']['resultCount']) {
-    return coefficient['score3']['scorePoint'];
-  } else if (resultCount >= coefficient['score2']['resultCount']) {
-    return coefficient['score2']['scorePoint'];
-  } else if (resultCount === coefficient['score1']['resultCount']) {
-    return coefficient['score1']['scorePoint'];
+  if (resultCount >= coefficient.score5.resultCount) {
+    return coefficient.score5.scorePoint;
+  } else if (resultCount >= coefficient.score4.resultCount) {
+    return coefficient.score4.scorePoint;
+  } else if (resultCount >= coefficient.score3.resultCount) {
+    return coefficient.score3.scorePoint;
+  } else if (resultCount >= coefficient.score2.resultCount) {
+    return coefficient.score2.scorePoint;
+  } else if (resultCount === coefficient.score1.resultCount) {
+    return coefficient.score1.scorePoint;
   } else {
     throw new Error();
   }

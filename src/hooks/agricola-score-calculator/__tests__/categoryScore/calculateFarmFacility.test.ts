@@ -1,5 +1,4 @@
 import { calculateFarmFacility } from '../../src/calculators/categoryScore';
-
 import { FarmFacilityResource } from '../../src/types/ScoreResource';
 
 describe('Core test calculateFarmFacility', () => {

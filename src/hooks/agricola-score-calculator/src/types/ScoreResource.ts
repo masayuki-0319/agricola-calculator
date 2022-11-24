@@ -1,11 +1,11 @@
-export type ScoreResource = {
+export interface ScoreResource {
   farmFacility: FarmFacilityResource;
   products: ProductsResource;
   family: FamilyResource;
   card: CardResource;
-};
+}
 
-export type FarmFacilityResource = {
+export interface FarmFacilityResource {
   field: number;
   pastures: number;
   emtpyFamyard: number;
@@ -14,22 +14,22 @@ export type FarmFacilityResource = {
     type: 'wood' | 'cray' | 'stone';
     count: number;
   };
-};
+}
 
-export type ProductsResource = {
+export interface ProductsResource {
   grain: number;
   vegetables: number;
   sheep: number;
   wildBoar: number;
   cattle: number;
-};
+}
 
-export type FamilyResource = {
+export interface FamilyResource {
   familyMember: number;
   beggingCard: number;
-};
+}
 
-export type CardResource = {
+export interface CardResource {
   basePoint: number;
   endBonus: number;
-};
+}

@@ -64,16 +64,16 @@ function calculateFarm(resultCount: number, farm: Farm): number {
   validateNumber(resultCount);
   const coefficient = FARM_COEFFICIENT[farm];
 
-  if (resultCount >= coefficient['score5']['resultCount']) {
-    return coefficient['score5']['scorePoint'];
-  } else if (resultCount >= coefficient['score4']['resultCount']) {
-    return coefficient['score4']['scorePoint'];
-  } else if (resultCount >= coefficient['score3']['resultCount']) {
-    return coefficient['score3']['scorePoint'];
-  } else if (resultCount >= coefficient['score2']['resultCount']) {
-    return coefficient['score2']['scorePoint'];
-  } else if (resultCount <= coefficient['score1']['resultCount']) {
-    return coefficient['score1']['scorePoint'];
+  if (resultCount >= coefficient.score5.resultCount) {
+    return coefficient.score5.scorePoint;
+  } else if (resultCount >= coefficient.score4.resultCount) {
+    return coefficient.score4.scorePoint;
+  } else if (resultCount >= coefficient.score3.resultCount) {
+    return coefficient.score3.scorePoint;
+  } else if (resultCount >= coefficient.score2.resultCount) {
+    return coefficient.score2.scorePoint;
+  } else if (resultCount <= coefficient.score1.resultCount) {
+    return coefficient.score1.scorePoint;
   } else {
     throw new Error();
   }
