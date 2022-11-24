@@ -7,4 +7,7 @@ module.exports = {
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
+  modulePathIgnorePatterns: [
+    '<rootDir>/src/hooks/agricola-score-calculator/__tests__/util/',
+  ],
 };
