@@ -15,7 +15,6 @@
     "react-dom": "^18.2.0",
     "react-native-web": "^0.18.10",
     "react-scripts": "5.0.1",
-    "tamagui": "^1.0.1-beta.220",
     "typescript": "*",
     "web-vitals": "^2.1.4"
   },
@@ -67,7 +66,6 @@
   },
   "eslintIgnore": [
     "/.eslintrc.js",
-    "/jest.config.js",
-    "tamagui.config.js"
+    "/jest.config.js"
   ]
 }
