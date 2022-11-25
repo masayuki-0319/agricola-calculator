@@ -41,7 +41,7 @@ module.exports = {
     // Base
     //
     'comma-dangle': [
-      'error',
+      ERROR,
       {
         arrays: 'always-multiline',
         objects: 'always-multiline',
@@ -50,10 +50,10 @@ module.exports = {
         functions: 'never',
       },
     ],
-    camelcase: 'error',
-    'spaced-comment': 'error',
-    quotes: ['error', 'single'],
-    'no-duplicate-imports': 'error',
+    camelcase: ERROR,
+    'spaced-comment': ERROR,
+    quotes: [ERROR, 'single'],
+    'no-duplicate-imports': ERROR,
     //
     //  Plugin typescript-eslint
     //
@@ -83,14 +83,14 @@ module.exports = {
     //
     //  Plugin react-hooks
     //
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/rules-of-hooks': ERROR,
+    'react-hooks/exhaustive-deps': ERROR,
     //
     //  Plugin react-native
     //
     'react-native/no-unused-styles': WARN,
     'react-native/split-platform-components': ERROR,
-    'react-native/no-inline-styles': ERROR,
+    'react-native/no-inline-styles': WARN,
     'react-native/no-color-literals': ERROR,
     'react-native/no-raw-text': ERROR,
     'react-native/no-single-element-style-arrays': ERROR,
@@ -98,7 +98,7 @@ module.exports = {
     //  Plugin typescript-eslint
     //
     '@typescript-eslint/no-unused-vars': [
-      'warn',
+      WARN,
       {
         vars: 'all',
         args: 'after-used',
@@ -110,9 +110,9 @@ module.exports = {
     //
     //  Plugin unused-imports
     //
-    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-imports': ERROR,
     'unused-imports/no-unused-vars': [
-      'warn',
+      WARN,
       {
         vars: 'all',
         varsIgnorePattern: '^_',
@@ -124,7 +124,7 @@ module.exports = {
     //  Plugin import
     //
     'import/order': [
-      'error',
+      ERROR,
       {
         groups: [
           'builtin',
