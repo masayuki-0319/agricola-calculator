@@ -1,7 +1,12 @@
+const IGNORE = 0;
+const WARN = 1;
+const ERROR = 2;
+
 module.exports = {
   env: {
     browser: true,
     es2021: true,
+    'react-native/react-native': true,
   },
   extends: [
     'eslint:recommended',
@@ -18,10 +23,14 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     project: ['./tsconfig.json'],
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   plugins: [
     'react',
     'react-hooks',
+    'react-native',
     '@typescript-eslint',
     'unused-imports',
     'prettier',
@@ -48,34 +57,43 @@ module.exports = {
     //
     //  Plugin typescript-eslint
     //
-    '@typescript-eslint/consistent-type-definitions': 0,
-    '@typescript-eslint/ban-types': 0,
+    '@typescript-eslint/consistent-type-definitions': IGNORE,
+    '@typescript-eslint/ban-types': IGNORE,
     //
     //  Plugin React
     //
-    'react/display-name': 0,
-    'react/jsx-boolean-value': 0,
-    'react/jsx-no-comment-textnodes': 1,
-    'react/jsx-no-duplicate-props': 2,
-    'react/jsx-no-undef': 2,
-    'react/jsx-sort-props': 0,
-    'react/jsx-uses-react': 1,
-    'react/jsx-uses-vars': 1,
-    'react/jsx-key': [1, { checkFragmentShorthand: true }],
-    'react/no-did-mount-set-state': 1,
-    'react/no-did-update-set-state': 1,
-    'react/no-multi-comp': 0,
-    'react/no-string-refs': 1,
-    'react/no-unknown-property': 2,
-    'react/prop-types': 0,
-    'react/react-in-jsx-scope': 1,
-    'react/self-closing-comp': 1,
-    'react/wrap-multilines': 0,
+    'react/display-name': IGNORE,
+    'react/jsx-boolean-value': IGNORE,
+    'react/jsx-no-comment-textnodes': WARN,
+    'react/jsx-no-duplicate-props': ERROR,
+    'react/jsx-no-undef': ERROR,
+    'react/jsx-sort-props': IGNORE,
+    'react/jsx-uses-react': WARN,
+    'react/jsx-uses-vars': WARN,
+    'react/jsx-key': [WARN, { checkFragmentShorthand: true }],
+    'react/no-did-mount-set-state': WARN,
+    'react/no-did-update-set-state': WARN,
+    'react/no-multi-comp': IGNORE,
+    'react/no-string-refs': WARN,
+    'react/no-unknown-property': ERROR,
+    'react/prop-types': IGNORE,
+    'react/react-in-jsx-scope': WARN,
+    'react/self-closing-comp': WARN,
+    'react/wrap-multilines': IGNORE,
     //
     //  Plugin react-hooks
     //
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
+    //
+    //  Plugin react-native
+    //
+    'react-native/no-unused-styles': WARN,
+    'react-native/split-platform-components': ERROR,
+    'react-native/no-inline-styles': ERROR,
+    'react-native/no-color-literals': ERROR,
+    'react-native/no-raw-text': ERROR,
+    'react-native/no-single-element-style-arrays': ERROR,
     //
     //  Plugin typescript-eslint
     //
