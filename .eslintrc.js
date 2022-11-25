@@ -38,7 +38,7 @@ module.exports = {
   ],
   rules: {
     //
-    // Base
+    // Favorite
     //
     'comma-dangle': [
       ERROR,
@@ -54,6 +54,99 @@ module.exports = {
     'spaced-comment': ERROR,
     quotes: [ERROR, 'single'],
     'no-duplicate-imports': ERROR,
+    //
+    // Base
+    //
+    'no-cond-assign': WARN, // disallow assignment in conditional expressions
+    'no-console': IGNORE, // disallow use of console (off by default in the node environment)
+    'no-const-assign': ERROR, // disallow assignment to const-declared variables
+    'no-constant-condition': IGNORE, // disallow use of constant expressions in conditions
+    'no-control-regex': WARN, // disallow control characters in regular expressions
+    'no-debugger': WARN, // disallow use of debugger
+    'no-dupe-class-members': ERROR, // Disallow duplicate name in class members
+    'no-dupe-keys': ERROR, // disallow duplicate keys when creating object literals
+    'no-empty': IGNORE, // disallow empty statements
+    'no-ex-assign': WARN, // disallow assigning to the exception in a catch block
+    'no-extra-boolean-cast': WARN, // disallow double-negation boolean casts in a boolean context
+    'no-extra-parens': IGNORE, // disallow unnecessary parentheses (off by default)
+    'no-extra-semi': IGNORE, // disallow unnecessary semicolons
+    'no-func-assign': WARN, // disallow overwriting functions written as function declarations
+    'no-inner-declarations': IGNORE, // disallow function or variable declarations in nested blocks
+    'no-invalid-regexp': WARN, // disallow invalid regular expression strings in the RegExp constructor
+    'no-negated-in-lhs': WARN, // disallow negation of the left operand of an in expression
+    'no-obj-calls': WARN, // disallow the use of object properties of the global object (Math and JSON) as functions
+    'no-regex-spaces': WARN, // disallow multiple spaces in a regular expression literal
+    'no-reserved-keys': IGNORE, // disallow reserved words being used as object literal keys (off by default)
+    'no-sparse-arrays': WARN, // disallow sparse arrays
+    'no-unreachable': ERROR, // disallow unreachable statements after a return, throw, continue, or break statement
+    'use-isnan': WARN, // disallow comparisons with the value NaN
+    'valid-jsdoc': IGNORE, // Ensure JSDoc comments are valid (off by default)
+    'valid-typeof': WARN, // Ensure that the results of typeof are compared against a valid string
+    //
+    //  Base Best Practices
+    //
+    'block-scoped-var': IGNORE, // treat var statements as if they were block scoped (off by default)
+    complexity: IGNORE, // specify the maximum cyclomatic complexity allowed in a program (off by default)
+    'consistent-return': IGNORE, // require return statements to either always or never specify values
+    curly: IGNORE, // specify curly brace conventions for all control statements
+    'default-case': IGNORE, // require default case in switch statements (off by default)
+    'dot-notation': WARN, // encourages use of dot notation whenever possible
+    eqeqeq: [WARN, 'allow-null'], // require the use of === and !==
+    'guard-for-in': IGNORE, // make sure for-in loops have an if statement (off by default)
+    'no-alert': WARN, // disallow the use of alert, confirm, and prompt
+    'no-caller': WARN, // disallow use of arguments.caller or arguments.callee
+    'no-div-regex': WARN, // disallow division operators explicitly at beginning of regular expression (off by default)
+    'no-else-return': IGNORE, // disallow else after a return in an if (off by default)
+    'no-eq-null': IGNORE, // disallow comparisons to null without a type-checking operator (off by default)
+    'no-eval': ERROR, // disallow use of eval()
+    'no-extend-native': WARN, // disallow adding to native types
+    'no-extra-bind': WARN, // disallow unnecessary function binding
+    'no-fallthrough': WARN, // disallow fallthrough of case statements
+    'no-floating-decimal': IGNORE, // disallow the use of leading or trailing decimal points in numeric literals (off by default)
+    'no-implied-eval': WARN, // disallow use of eval()-like methods
+    'no-labels': WARN, // disallow use of labeled statements
+    'no-iterator': WARN, // disallow usage of __iterator__ property
+    'no-lone-blocks': WARN, // disallow unnecessary nested blocks
+    'no-loop-func': IGNORE, // disallow creation of functions within loops
+    'no-multi-str': IGNORE, // disallow use of multiline strings
+    'no-native-reassign': IGNORE, // disallow reassignments of native objects
+    'no-new': WARN, // disallow use of new operator when not part of the assignment or comparison
+    'no-new-func': ERROR, // disallow use of new operator for Function object
+    'no-new-wrappers': WARN, // disallows creating new instances of String,Number, and Boolean
+    'no-octal': WARN, // disallow use of octal literals
+    'no-octal-escape': WARN, // disallow use of octal escape sequences in string literals, such as var foo = "Copyright \251";
+    'no-proto': WARN, // disallow usage of __proto__ property
+    'no-redeclare': IGNORE, // disallow declaring the same variable more then once
+    'no-return-assign': WARN, // disallow use of assignment in return statement
+    'no-script-url': WARN, // disallow use of javascript: urls.
+    'no-self-compare': WARN, // disallow comparisons where both sides are exactly the same (off by default)
+    'no-sequences': WARN, // disallow use of comma operator
+    'no-unused-expressions': IGNORE, // disallow usage of expressions in statement position
+    'no-useless-escape': WARN, // disallow escapes that don't have any effect in literals
+    'no-void': WARN, // disallow use of void operator (off by default)
+    'no-warning-comments': IGNORE, // disallow usage of configurable warning terms in comments": WARN,                        // e.g. TODO or FIXME (off by default)
+    'no-with': WARN, // disallow use of the with statement
+    radix: WARN, // require use of the second argument for parseInt() (off by default)
+    'semi-spacing': IGNORE, // require a space after a semi-colon
+    'vars-on-top': IGNORE, // requires to declare all vars on top of their containing scope (off by default)
+    'wrap-iife': IGNORE, // require immediate function invocation to be wrapped in parentheses (off by default)
+    yoda: WARN, // require or disallow Yoda conditions
+    //
+    //  Base variables
+    //
+    'no-catch-shadow': WARN, // disallow the catch clause parameter name being the same as a variable in the outer scope (off by default in the node environment)
+    'no-delete-var': WARN, // disallow deletion of variables
+    'no-label-var': WARN, // disallow labels that share a name with a variable
+    'no-shadow': WARN, // disallow declaration of variables already declared in the outer scope
+    'no-shadow-restricted-names': WARN, // disallow shadowing of names such as arguments
+    'no-undef': ERROR, // disallow use of undeclared variables unless mentioned in a /*global */ block
+    'no-undefined': IGNORE, // disallow use of undefined variable (off by default)
+    'no-undef-init': WARN, // disallow use of undefined when initializing variables
+    'no-unused-vars': [
+      WARN,
+      { vars: 'all', args: 'none', ignoreRestSiblings: true },
+    ], // disallow declaration of variables that are not used in the code
+    'no-use-before-define': IGNORE, // disallow use of variables before they are defined
     //
     //  Plugin typescript-eslint
     //
