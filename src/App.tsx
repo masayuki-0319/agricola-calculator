@@ -1,14 +1,9 @@
 import React from 'react';
 
-import { View, Text } from 'react-native';
+import { Home } from './screens/Home';
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const App = () => {
-  return (
-    <View>
-      <Text>Hello React Native for Web!</Text>
-    </View>
-  );
+const App: React.FC = () => {
+  return <Home />;
 };
 
 export default App;

@@ -7,10 +7,10 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'standard-with-typescript',
-    'prettier',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'plugin:import/typescript',
+    'prettier',
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
@@ -45,6 +45,11 @@ module.exports = {
     'spaced-comment': 'error',
     quotes: ['error', 'single'],
     'no-duplicate-imports': 'error',
+    //
+    //  Plugin typescript-eslint
+    //
+    '@typescript-eslint/consistent-type-definitions': 0,
+    '@typescript-eslint/ban-types': 0,
     //
     //  Plugin React
     //
