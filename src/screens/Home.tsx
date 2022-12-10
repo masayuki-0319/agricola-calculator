@@ -1,29 +1,29 @@
 import * as React from 'react';
 
-import { Image } from 'native-base';
-import { View, Text, StyleSheet } from 'react-native';
+import { Box } from 'native-base';
+import { View, StyleSheet } from 'react-native';
 
-import { ScoreResourceImage } from '../assets';
+import { ScoreInput } from '../components/ScoreInput';
 
 type Props = {};
 
 export const Home: React.FC<Props> = () => {
   return (
-    <View style={styles.container}>
-      <View>
-        <Text>Page</Text>
-        <Image src={ScoreResourceImage.BeggarCards} style={styles.image} />
+    <Box style={styles.layout}>
+      <View style={styles.container}>
+        <ScoreInput />
       </View>
-    </View>
+    </Box>
   );
 };
 
 const styles = StyleSheet.create({
+  layout: {
+    flex: 1,
+    margin: 100,
+  },
   container: {
     flex: 1,
-  },
-  image: {
-    width: 200,
-    height: 200,
+    justifyContent: 'center',
   },
 });
