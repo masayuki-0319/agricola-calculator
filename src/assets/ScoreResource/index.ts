@@ -1,0 +1,15 @@
+export { default as BeggarCards } from './BeggarCards.jpeg';
+export { default as CardBasePoints } from './CardBasePoints.jpeg';
+export { default as CardEndBonus } from './CardEndBonus.jpeg';
+export { default as Cattle } from './Cattle.jpeg';
+export { default as ClayRooms } from './ClayRooms.jpeg';
+export { default as EmtpyFamyard } from './EmtpyFamyard.jpeg';
+export { default as FamilyMember } from './FamilyMember.jpeg';
+export { default as FancedStable } from './FancedStable.jpeg';
+export { default as Fields } from './Fields.jpeg';
+export { default as Grain } from './Grain.jpeg';
+export { default as Pastures } from './Pastures.jpeg';
+export { default as Sheep } from './Sheep.jpeg';
+export { default as StoneRooms } from './StoneRooms.jpeg';
+export { default as Vegetables } from './Vegetables.jpeg';
+export { default as WildBoar } from './WildBoar.jpeg';
