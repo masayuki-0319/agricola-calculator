@@ -1,15 +1,17 @@
 import React from 'react';
 
-import { Box, HStack, Image, Text } from 'native-base';
-import { StyleSheet, View } from 'react-native';
+import { View, Box, HStack, Image, Spacer, Text } from 'native-base';
+import { StyleSheet } from 'react-native';
 
 import { ScoreResourceImage } from '../assets';
 
 export const ScoreInput: React.FC = () => {
+  const points = 4;
+
   return (
     <Box alignItems='center'>
       <Box
-        maxWidth={400}
+        maxWidth={470}
         rounded='lg'
         overflow='hidden'
         borderColor='coolGray.200'
@@ -19,26 +21,38 @@ export const ScoreInput: React.FC = () => {
           borderWidth: 0,
         }}
       >
-        <Box style={{ width: 400, height: 250 }}>
+        <Box style={{ width: 470, height: 250 }}>
           <View>
             <Image
               source={{
                 uri: ScoreResourceImage.Fields,
               }}
-              width={400}
+              width={470}
               height={200}
+              resizeMode='contain'
             />
           </View>
           <View>
             <HStack
-              bg='warmGray.100'
-              bottom='0'
-              px='3'
-              py='1.5'
+              bg='warmGray.200'
+              paddingX={4}
               justifyContent={'space-between'}
             >
               <Text fontSize={20}>Fields</Text>
-              <Text fontSize={20}>4 Points</Text>
+              <HStack>
+                <View
+                  textAlign='center'
+                  width={8}
+                  borderRadius={'50%'}
+                  backgroundColor={points > 0 ? 'blue.500' : 'red.500'}
+                >
+                  <Text fontSize={20} color='white'>
+                    {points}
+                  </Text>
+                </View>
+                <Spacer width={2} />
+                <Text fontSize={20}>Points</Text>
+              </HStack>
             </HStack>
           </View>
         </Box>
@@ -52,34 +66,6 @@ export const ScoreInput: React.FC = () => {
       </Box>
     </Box>
   );
-
-  // return (
-  //   <View style={styles.scoreContainer}>
-  //     <Image src={ScoreResourceImage.Fields} style={styles.image} />
-  //     <View
-  //       style={{
-  //         flexDirection: 'row',
-  //         justifyContent: 'space-between',
-  //       }}
-  //     >
-  //       <Text>Fields</Text>
-  //       <Text>4 Points</Text>
-  //     </View>
-  //   </View>
-  // );
 };
 
-const styles = StyleSheet.create({
-  scoreContainer: {
-    width: 470,
-    height: 500,
-  },
-  image: {
-    width: '100%',
-    height: 200,
-    borderRadius: 8,
-  },
-  scoreText: {
-    fontSize: 20,
-  },
-});
+const styles = StyleSheet.create({});
