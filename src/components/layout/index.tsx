@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { Box } from 'native-base';
 
+import { Body } from './Body';
+import { Footer } from './Footer';
 import { Header } from './Header';
 
 type Props = {
@@ -14,7 +16,10 @@ export const Layout: React.FC<Props> = (props) => {
   return (
     <Box>
       <Header />
-      <Box>{children}</Box>
+      <Body>
+        {children}
+        <Footer />
+      </Body>
     </Box>
   );
 };
