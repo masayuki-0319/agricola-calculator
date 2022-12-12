@@ -184,7 +184,7 @@ module.exports = {
     'react-native/no-unused-styles': WARN,
     'react-native/split-platform-components': ERROR,
     'react-native/no-inline-styles': WARN,
-    'react-native/no-color-literals': ERROR,
+    'react-native/no-color-literals': WARN,
     'react-native/no-raw-text': ERROR,
     'react-native/no-single-element-style-arrays': ERROR,
     //
