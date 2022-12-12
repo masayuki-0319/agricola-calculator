@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box } from 'native-base';
+import { View } from 'react-native';
 
 import { Body } from './Body';
 import { Footer } from './Footer';
@@ -14,12 +14,10 @@ export const Layout: React.FC<Props> = (props) => {
   const { children } = props;
 
   return (
-    <Box>
+    <View>
       <Header />
-      <Body>
-        {children}
-        <Footer />
-      </Body>
-    </Box>
+      <Body>{children}</Body>
+      <Footer />
+    </View>
   );
 };

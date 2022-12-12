@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { Text, Image, Box, Center, AspectRatio } from 'native-base';
-import { ImageBackground } from 'react-native';
+import { View, Image, ImageBackground, StyleSheet } from 'react-native';
 
 import { ProductImage } from '../../assets';
 
@@ -9,31 +8,26 @@ type Props = {};
 
 export const Header: React.FC<Props> = () => {
   return (
-    <Box>
+    <View>
       <ImageBackground
         source={{ uri: ProductImage.HeaderBackground }}
-        style={{ width: '100%', height: 200 }}
+        style={styles.backgroundImage}
         imageStyle={{ resizeMode: 'repeat' }}
       >
-        <Center>
-          <AspectRatio
-            ratio={{
-              base: 10 / 3,
-            }}
-            width={{
-              base: '500',
-            }}
-            height={{
-              base: '150',
-            }}
-          >
-            <Image src={ProductImage.HeaderTitle} resizeMode='contain' />
-          </AspectRatio>
-          <Text fontSize={20} color={'warmGray.500'}>
-            Score Calculator
-          </Text>
-        </Center>
+        <Image
+          source={{ uri: ProductImage.HeaderTitle }}
+          resizeMode='contain'
+          style={{
+            height: 110,
+            justifyContent: 'center',
+          }}
+        />
       </ImageBackground>
-    </Box>
+    </View>
   );
 };
+const styles = StyleSheet.create({
+  backgroundImage: {
+    height: 150,
+  },
+});

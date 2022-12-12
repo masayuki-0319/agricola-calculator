@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { Text, Box, Center } from 'native-base';
-import { ImageBackground } from 'react-native';
+import { Text, View, ImageBackground, StyleSheet } from 'react-native';
 
 import { ProductImage } from '../../assets';
 
@@ -14,18 +13,29 @@ type Props = {};
  */
 export const Footer: React.FC<Props> = () => {
   return (
-    <Box flex={1} safeAreaTop>
+    <View style={styles.container}>
       <ImageBackground
         source={{ uri: ProductImage.FooterBackground }}
-        style={{ width: '100%', height: 100 }}
+        style={styles.backgroujndImage}
         imageStyle={{ resizeMode: 'repeat' }}
       >
-        <Center>
-          <Text fontSize={20} color={'white'}>
-            Footer
-          </Text>
-        </Center>
+        <View>
+          <Text style={styles.text}>Footer</Text>
+        </View>
       </ImageBackground>
-    </Box>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {},
+  backgroujndImage: {
+    width: '100%',
+    height: 100,
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 20,
+    color: 'white',
+  },
+});

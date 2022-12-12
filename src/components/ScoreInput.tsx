@@ -1,71 +1,91 @@
 import React from 'react';
 
-import { View, Box, HStack, Image, Spacer, Text } from 'native-base';
-import { StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 
 import { ScoreResourceImage } from '../assets';
+
+import { Spacer } from './Spacer';
 
 export const ScoreInput: React.FC = () => {
   const points = 4;
 
   return (
-    <Box alignItems='center'>
-      <Box
-        maxWidth={470}
-        rounded='lg'
-        overflow='hidden'
-        borderColor='coolGray.200'
-        borderWidth='1'
-        _web={{
-          shadow: 2,
-          borderWidth: 0,
-        }}
-      >
-        <Box style={{ width: 470, height: 250 }}>
-          <View>
-            <Image
-              source={{
-                uri: ScoreResourceImage.Fields,
-              }}
-              width={470}
-              height={200}
-              resizeMode='contain'
-            />
+    <View style={styles.container}>
+      <View style={styles.scoreArea}>
+        <View>
+          <Image
+            source={{
+              uri: ScoreResourceImage.Fields,
+            }}
+            style={styles.scoreImage}
+          />
+        </View>
+        <View>
+          <View style={styles.scoreBottomArea}>
+            <Text style={styles.scoreText}>Fields</Text>
+            <View>
+              <View
+                style={[
+                  styles.scoreTextRoundArea,
+                  {
+                    backgroundColor: points > 0 ? 'blue' : 'red',
+                  },
+                ]}
+              >
+                <Text style={[styles.scoreText, { color: 'white' }]}>
+                  {points}
+                </Text>
+              </View>
+              <Spacer width={2} />
+              <Text style={styles.scoreText}>Points</Text>
+            </View>
           </View>
-          <View>
-            <HStack
-              bg='warmGray.200'
-              paddingX={4}
-              justifyContent={'space-between'}
-            >
-              <Text fontSize={20}>Fields</Text>
-              <HStack>
-                <View
-                  textAlign='center'
-                  width={8}
-                  borderRadius={'50%'}
-                  backgroundColor={points > 0 ? 'blue.500' : 'red.500'}
-                >
-                  <Text fontSize={20} color='white'>
-                    {points}
-                  </Text>
-                </View>
-                <Spacer width={2} />
-                <Text fontSize={20}>Points</Text>
-              </HStack>
-            </HStack>
-          </View>
-        </Box>
-        <Box>
-          <HStack>
-            <Text fontWeight='bold' overflow={'auto'}>
-              DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription..............
-            </Text>
-          </HStack>
-        </Box>
-      </Box>
-    </Box>
+        </View>
+      </View>
+      <View>
+        <View>
+          <Text style={styles.descriptionText}>
+            DescriptionTextDescriptionTextDescriptionTextDescriptionTextDescriptionTextDescriptionTextDescriptionTextDescriptionTextDescriptionTextDescriptionText..............
+          </Text>
+        </View>
+      </View>
+    </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    maxWidth: 470,
+    borderRadius: 8,
+    overflow: 'hidden',
+    borderWidth: 1,
+  },
+  scoreArea: {
+    width: 470,
+    height: 250,
+  },
+  scoreBottomArea: {
+    backgroundColor: 'black',
+    opacity: 50,
+    paddingHorizontal: 4,
+    justifyContent: 'space-between',
+  },
+  scoreImage: {
+    width: 470,
+    height: 200,
+    resizeMode: 'contain',
+  },
+  scoreTextRoundArea: {
+    textAlign: 'center',
+    width: 8,
+    borderRadius: 50,
+  },
+  scoreText: {
+    fontSize: 20,
+  },
+  descriptionText: {
+    fontWeight: 'bold',
+    overflow: 'visible',
+  },
+});
