@@ -5,7 +5,7 @@ import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 import { ScoreResourceImage } from '../../assets';
 import { Spacer } from '../Spacer';
 
-export const ScoreInput: React.FC = () => {
+export const InputScore: React.FC = () => {
   const points = -4;
 
   const TitleArea: React.FC = () => {

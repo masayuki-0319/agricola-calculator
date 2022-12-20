@@ -2,14 +2,14 @@ import * as React from 'react';
 
 import { View, StyleSheet } from 'react-native';
 
-import { ScoreInput } from '../components/ScoreInput';
+import { InputScore } from '../components/InputScore';
 
 type Props = {};
 
 export const Home: React.FC<Props> = () => {
   return (
     <View style={styles.container}>
-      <ScoreInput />
+      <InputScore />
     </View>
   );
 };
