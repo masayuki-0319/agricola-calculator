@@ -18,7 +18,7 @@ export const Footer: React.FC<Props> = () => {
       <ImageBackground
         source={{ uri: ProductImage.FooterBackground }}
         style={styles.backgroundImage}
-        imageStyle={{ resizeMode: 'repeat' }}
+        imageStyle={styles.imageStyle}
       >
         <View>
           <Typography text='first' style={styles.text} />
@@ -32,6 +32,9 @@ const styles = StyleSheet.create({
   container: {},
   backgroundImage: {
     height: 100,
+  },
+  imageStyle: {
+    resizeMode: 'repeat',
   },
   text: {
     textAlign: 'center',

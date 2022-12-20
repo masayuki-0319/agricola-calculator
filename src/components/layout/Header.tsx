@@ -11,25 +11,29 @@ export const Header: React.FC<Props> = () => {
     <View>
       <ImageBackground
         source={{ uri: ProductImage.HeaderBackground }}
-        style={styles.backgroundImage}
-        imageStyle={{ resizeMode: 'repeat' }}
+        style={styles.backgroundImageArea}
+        imageStyle={styles.backgroundImageStyle}
       >
         <Image
           source={{ uri: ProductImage.HeaderTitle }}
           resizeMode='contain'
-          style={{
-            height: 100,
-            flexGrow: 1,
-          }}
+          style={styles.imageStyle}
         />
       </ImageBackground>
     </View>
   );
 };
 const styles = StyleSheet.create({
-  backgroundImage: {
+  backgroundImageArea: {
     height: 150,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  backgroundImageStyle: {
+    resizeMode: 'repeat',
+  },
+  imageStyle: {
+    height: 100,
+    flexGrow: 1,
   },
 });

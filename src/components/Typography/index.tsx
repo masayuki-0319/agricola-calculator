@@ -3,7 +3,7 @@ import * as React from 'react';
 import { StyleSheet, Text, TextProps } from 'react-native';
 
 type TypographyProps = {
-  text: string;
+  text: string | number;
 } & TextProps;
 
 const defaultStyles = StyleSheet.create({
