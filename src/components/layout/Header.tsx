@@ -18,8 +18,8 @@ export const Header: React.FC<Props> = () => {
           source={{ uri: ProductImage.HeaderTitle }}
           resizeMode='contain'
           style={{
-            height: 110,
-            justifyContent: 'center',
+            height: 100,
+            flexGrow: 1,
           }}
         />
       </ImageBackground>
@@ -29,5 +29,7 @@ export const Header: React.FC<Props> = () => {
 const styles = StyleSheet.create({
   backgroundImage: {
     height: 150,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
