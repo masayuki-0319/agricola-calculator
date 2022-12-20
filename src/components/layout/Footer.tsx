@@ -1,8 +1,9 @@
 import * as React from 'react';
 
-import { Text, View, ImageBackground, StyleSheet } from 'react-native';
+import { View, ImageBackground, StyleSheet } from 'react-native';
 
 import { ProductImage } from '../../assets';
+import { Typography } from '../Typography';
 
 type Props = {};
 
@@ -20,7 +21,7 @@ export const Footer: React.FC<Props> = () => {
         imageStyle={{ resizeMode: 'repeat' }}
       >
         <View>
-          <Text style={styles.text}>Footer</Text>
+          <Typography text='first' style={styles.text} />
         </View>
       </ImageBackground>
     </View>

@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import { View, StyleSheet, ImageBackground } from 'react-native';
 
 import { ScoreResourceImage } from '../../assets';
 import { Spacer } from '../Spacer';
+import { Typography } from '../Typography';
 
 export const InputScore: React.FC = () => {
   const points = -4;
@@ -11,7 +12,7 @@ export const InputScore: React.FC = () => {
   const TitleArea: React.FC = () => {
     return (
       <View style={styles.resourceTextArea}>
-        <Text style={styles.resourceText}>Fields</Text>
+        <Typography text='Fields' style={styles.resourceText} />
         <View
           style={{
             flexDirection: 'row',
@@ -29,12 +30,13 @@ export const InputScore: React.FC = () => {
               },
             ]}
           >
-            <Text style={[styles.resourceText, { color: 'white' }]}>
-              {points}
-            </Text>
+            <Typography
+              text='points'
+              style={[styles.resourceText, { color: 'white' }]}
+            />
           </View>
           <Spacer width={12} />
-          <Text style={styles.resourceText}>Points</Text>
+          <Typography text='Points' style={styles.resourceText} />
         </View>
       </View>
     );
@@ -75,7 +77,7 @@ export const InputScore: React.FC = () => {
         </ImageBackground>
       </View>
       <View>
-        <Text style={styles.descriptionText}>- 0 +</Text>
+        <Typography text='- 0 +' style={styles.descriptionText} />
       </View>
     </View>
   );
