@@ -3,12 +3,13 @@ import React from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
 
 import { ScoreResourceImage } from '../../assets';
-import { Typography } from '../Typography';
 
+import { InputArea } from './InputArea';
 import { TitleArea } from './TitleArea';
 
 export const InputScore: React.FC = () => {
-  const points = -4;
+  const points = 4;
+  const inputText = 4;
 
   return (
     <View>
@@ -28,7 +29,7 @@ export const InputScore: React.FC = () => {
         </ImageBackground>
       </View>
       <View>
-        <Typography text='- 0 +' style={styles.descriptionText} />
+        <InputArea inputText={inputText} />
       </View>
     </View>
   );
@@ -56,9 +57,5 @@ const styles = StyleSheet.create({
   },
   titleArea: {
     backgroundColor: TITLE_AREA_COLOR,
-  },
-  descriptionText: {
-    fontSize: 20,
-    fontWeight: 'bold',
   },
 });
