@@ -9,6 +9,11 @@ type Props = {
   points: number;
 };
 
+const RESOURCE_TITLE_COLOR = '#CFCBC0';
+const SCORE_COLOR = 'white';
+const POSITIVE_SCORE_CORE = '#1B3B53';
+const NEGATIVE_SCORE_CORE = '#EF4748';
+
 export const TitleArea: React.FC<Props> = (props) => {
   const { points } = props;
 
@@ -24,7 +29,8 @@ export const TitleArea: React.FC<Props> = (props) => {
           style={[
             styles.scoreCircle,
             {
-              backgroundColor: points > 0 ? '#1B3B53' : '#EF4748',
+              backgroundColor:
+                points > 0 ? POSITIVE_SCORE_CORE : NEGATIVE_SCORE_CORE,
             },
           ]}
         >
@@ -55,9 +61,9 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   text: {
-    color: '#CFCBC0',
+    color: RESOURCE_TITLE_COLOR,
   },
   pointsText: {
-    color: 'white',
+    color: SCORE_COLOR,
   },
 });

@@ -34,6 +34,8 @@ export const InputScore: React.FC = () => {
   );
 };
 
+const TITLE_AREA_COLOR = 'rgba(0, 0, 0, 0.5)';
+
 const styles = StyleSheet.create({
   resourceImageArea: {
     flexDirection: 'row',
@@ -53,11 +55,10 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   titleArea: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: TITLE_AREA_COLOR,
   },
   descriptionText: {
     fontSize: 20,
-    color: 'white',
     fontWeight: 'bold',
   },
 });

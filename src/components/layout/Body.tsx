@@ -12,9 +12,11 @@ export const Body: React.FC<Props> = (props) => {
   return <View style={styles.body}>{children}</View>;
 };
 
+const BODY_COLOR = '#203D50';
+
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    backgroundColor: '#203D50',
+    backgroundColor: BODY_COLOR,
   },
 });
