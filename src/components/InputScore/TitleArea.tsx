@@ -6,6 +6,7 @@ import { Spacer } from '../Spacer';
 import { Typography } from '../Typography';
 
 type Props = {
+  resourceTitle: string;
   score: number;
 };
 
@@ -15,11 +16,11 @@ const POSITIVE_SCORE_CORE = '#1B3B53';
 const NEGATIVE_SCORE_CORE = '#EF4748';
 
 export const TitleArea: React.FC<Props> = (props) => {
-  const { score } = props;
+  const { resourceTitle, score } = props;
 
   return (
     <View style={styles.container}>
-      <Typography text='Fields' style={styles.text} />
+      <Typography text={resourceTitle} style={styles.text} />
       <View style={styles.scoreArea}>
         {/**
          * @TODO

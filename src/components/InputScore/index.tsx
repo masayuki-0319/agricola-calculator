@@ -13,6 +13,8 @@ import { InputArea } from './InputArea';
 import { TitleArea } from './TitleArea';
 
 type Props = {
+  resourceTitle?: string;
+  resourceImage?: string;
   resourceResult?: number;
   onChangeResourceResult?: () => void;
   calculateScore?: () => number;
@@ -21,6 +23,8 @@ type Props = {
 export const InputScore: React.FC<Props> = (props) => {
   // const {} = props;
 
+  const resourceTitle = 'Fields';
+  const resourceImage = ScoreResourceImage.Fields;
   const calculateScore = React.useCallback(calculateField, []);
   const [resourceResult, setResourceResult] = React.useState(0);
 
@@ -29,14 +33,17 @@ export const InputScore: React.FC<Props> = (props) => {
       <View style={styles.resourceImageArea}>
         <ImageBackground
           source={{
-            uri: ScoreResourceImage.Fields,
+            uri: resourceImage,
           }}
           style={styles.imageArea}
           imageStyle={styles.imageStyle}
         >
           <View style={styles.imageFooterArea}>
             <View style={styles.titleArea}>
-              <TitleArea score={calculateScore(resourceResult)} />
+              <TitleArea
+                resourceTitle={resourceTitle}
+                score={calculateScore(resourceResult)}
+              />
             </View>
           </View>
         </ImageBackground>
