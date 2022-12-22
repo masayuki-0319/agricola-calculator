@@ -1,15 +1,20 @@
+/**
+ * @TODO
+ * - 各スコアを計算可能にできるよう共通コンポーネント化
+ */
 import React from 'react';
 
 import { View, StyleSheet, ImageBackground } from 'react-native';
 
 import { ScoreResourceImage } from '../../assets';
+import { calculateField } from '../../hooks/agricola-score-calculator/src';
 
 import { InputArea } from './InputArea';
 import { TitleArea } from './TitleArea';
 
 export const InputScore: React.FC = () => {
-  const points = 4;
-  const inputText = 4;
+  const calculateScore = React.useCallback(calculateField, []);
+  const [inputText, setInputText] = React.useState(0);
 
   return (
     <View>
@@ -23,13 +28,13 @@ export const InputScore: React.FC = () => {
         >
           <View style={styles.imageFooterArea}>
             <View style={styles.titleArea}>
-              <TitleArea points={points} />
+              <TitleArea score={calculateScore(inputText)} />
             </View>
           </View>
         </ImageBackground>
       </View>
       <View>
-        <InputArea inputText={inputText} />
+        <InputArea inputText={inputText} setInputText={setInputText} />
       </View>
     </View>
   );

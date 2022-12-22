@@ -6,7 +6,7 @@ import { Spacer } from '../Spacer';
 import { Typography } from '../Typography';
 
 type Props = {
-  points: number;
+  score: number;
 };
 
 const RESOURCE_TITLE_COLOR = '#CFCBC0';
@@ -15,7 +15,7 @@ const POSITIVE_SCORE_CORE = '#1B3B53';
 const NEGATIVE_SCORE_CORE = '#EF4748';
 
 export const TitleArea: React.FC<Props> = (props) => {
-  const { points } = props;
+  const { score } = props;
 
   return (
     <View style={styles.container}>
@@ -30,11 +30,11 @@ export const TitleArea: React.FC<Props> = (props) => {
             styles.scoreCircle,
             {
               backgroundColor:
-                points > 0 ? POSITIVE_SCORE_CORE : NEGATIVE_SCORE_CORE,
+                score > 0 ? POSITIVE_SCORE_CORE : NEGATIVE_SCORE_CORE,
             },
           ]}
         >
-          <Typography text={points} style={styles.pointsText} />
+          <Typography text={score} style={styles.pointsText} />
         </View>
         <Spacer width={12} />
         <Typography text='Points' style={styles.text} />

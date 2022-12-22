@@ -4,23 +4,41 @@ import { View, StyleSheet } from 'react-native';
 
 import { Typography } from '../Typography';
 
+import { InputScoreButton } from './InputScoreButton';
+
 type Props = {
   inputText: number;
+  setInputText: (value: number) => void;
 };
 
 export const InputArea: React.FC<Props> = (props) => {
-  const { inputText } = props;
+  const { inputText, setInputText } = props;
+
+  const onPress = React.useCallback(
+    (valueInput: -1 | 1, currentInputScore: number): void => {
+      const updateInputText = valueInput + currentInputScore;
+
+      if (updateInputText < 0) return;
+
+      setInputText(updateInputText);
+    },
+    [setInputText]
+  );
 
   return (
     <View style={styles.container}>
       <View style={styles.changeTextArea}>
-        <Typography text='-' style={styles.changeText} />
+        <InputScoreButton onPress={() => onPress(-1, inputText)}>
+          <Typography text='-' style={styles.changeText} />
+        </InputScoreButton>
       </View>
       <View style={styles.inputTextArea}>
         <Typography text={inputText} style={styles.inputText} />
       </View>
       <View style={styles.changeTextArea}>
-        <Typography text='+' style={styles.changeText} />
+        <InputScoreButton onPress={() => onPress(1, inputText)}>
+          <Typography text='+' style={styles.changeText} />
+        </InputScoreButton>
       </View>
     </View>
   );
