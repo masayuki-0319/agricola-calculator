@@ -6,27 +6,25 @@ import React from 'react';
 
 import { View, StyleSheet, ImageBackground } from 'react-native';
 
-import { ScoreResourceImage } from '../../assets';
-import { calculateField } from '../../hooks/agricola-score-calculator/src';
-
 import { InputArea } from './InputArea';
 import { TitleArea } from './TitleArea';
 
 type Props = {
-  resourceTitle?: string;
-  resourceImage?: string;
-  resourceResult?: number;
-  onChangeResourceResult?: () => void;
-  calculateScore?: () => number;
+  resourceTitle: string;
+  resourceImage: string;
+  resourceResult: number;
+  onChangeResourceResult: React.Dispatch<React.SetStateAction<number>>;
+  calculateScore: (value: number) => number;
 };
 
 export const InputScore: React.FC<Props> = (props) => {
-  // const {} = props;
-
-  const resourceTitle = 'Fields';
-  const resourceImage = ScoreResourceImage.Fields;
-  const calculateScore = React.useCallback(calculateField, []);
-  const [resourceResult, setResourceResult] = React.useState(0);
+  const {
+    resourceTitle,
+    resourceImage,
+    resourceResult,
+    onChangeResourceResult,
+    calculateScore,
+  } = props;
 
   return (
     <View>
@@ -51,7 +49,7 @@ export const InputScore: React.FC<Props> = (props) => {
       <View>
         <InputArea
           resourceResult={resourceResult}
-          setResourceResult={setResourceResult}
+          setResourceResult={onChangeResourceResult}
         />
       </View>
     </View>
