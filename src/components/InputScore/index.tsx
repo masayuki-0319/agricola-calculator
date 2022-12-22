@@ -12,9 +12,17 @@ import { calculateField } from '../../hooks/agricola-score-calculator/src';
 import { InputArea } from './InputArea';
 import { TitleArea } from './TitleArea';
 
-export const InputScore: React.FC = () => {
+type Props = {
+  resourceResult?: number;
+  onChangeResourceResult?: () => void;
+  calculateScore?: () => number;
+};
+
+export const InputScore: React.FC<Props> = (props) => {
+  // const {} = props;
+
   const calculateScore = React.useCallback(calculateField, []);
-  const [inputText, setInputText] = React.useState(0);
+  const [resourceResult, setResourceResult] = React.useState(0);
 
   return (
     <View>
@@ -28,13 +36,16 @@ export const InputScore: React.FC = () => {
         >
           <View style={styles.imageFooterArea}>
             <View style={styles.titleArea}>
-              <TitleArea score={calculateScore(inputText)} />
+              <TitleArea score={calculateScore(resourceResult)} />
             </View>
           </View>
         </ImageBackground>
       </View>
       <View>
-        <InputArea inputText={inputText} setInputText={setInputText} />
+        <InputArea
+          resourceResult={resourceResult}
+          setResourceResult={setResourceResult}
+        />
       </View>
     </View>
   );

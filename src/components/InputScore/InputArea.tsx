@@ -7,12 +7,12 @@ import { Typography } from '../Typography';
 import { InputScoreButton } from './InputScoreButton';
 
 type Props = {
-  inputText: number;
-  setInputText: (value: number) => void;
+  resourceResult: number;
+  setResourceResult: (value: number) => void;
 };
 
 export const InputArea: React.FC<Props> = (props) => {
-  const { inputText, setInputText } = props;
+  const { resourceResult, setResourceResult } = props;
 
   const onPress = React.useCallback(
     (valueInput: -1 | 1, currentInputScore: number): void => {
@@ -20,23 +20,23 @@ export const InputArea: React.FC<Props> = (props) => {
 
       if (updateInputText < 0) return;
 
-      setInputText(updateInputText);
+      setResourceResult(updateInputText);
     },
-    [setInputText]
+    [setResourceResult]
   );
 
   return (
     <View style={styles.container}>
       <View style={styles.changeTextArea}>
-        <InputScoreButton onPress={() => onPress(-1, inputText)}>
+        <InputScoreButton onPress={() => onPress(-1, resourceResult)}>
           <Typography text='-' style={styles.changeText} />
         </InputScoreButton>
       </View>
       <View style={styles.inputTextArea}>
-        <Typography text={inputText} style={styles.inputText} />
+        <Typography text={resourceResult} style={styles.inputText} />
       </View>
       <View style={styles.changeTextArea}>
-        <InputScoreButton onPress={() => onPress(1, inputText)}>
+        <InputScoreButton onPress={() => onPress(1, resourceResult)}>
           <Typography text='+' style={styles.changeText} />
         </InputScoreButton>
       </View>
