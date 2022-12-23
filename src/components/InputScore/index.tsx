@@ -9,7 +9,7 @@ import { View, StyleSheet, ImageBackground } from 'react-native';
 import { InputArea } from './InputArea';
 import { TitleArea } from './TitleArea';
 
-type Props = {
+export type InputScoreProps = {
   resourceTitle: string;
   resourceImage: string;
   resourceResult: number;
@@ -17,7 +17,7 @@ type Props = {
   calculateScore: (value: number) => number;
 };
 
-export const InputScore: React.FC<Props> = (props) => {
+export const InputScore: React.FC<InputScoreProps> = (props) => {
   const {
     resourceTitle,
     resourceImage,
