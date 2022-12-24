@@ -2,29 +2,45 @@ import * as React from 'react';
 
 import { View, StyleSheet } from 'react-native';
 
-import { ScoreResourceImage } from '../assets';
 import { InputScore } from '../components/InputScore';
-import { calculateField } from '../hooks/agricola-score-calculator/src';
+import { useInitialResourceCalculate } from '../hooks/useInitialResourceCalculate';
 
 type Props = {};
 
 export const Home: React.FC<Props> = () => {
-  const resourceTitle = 'Fields';
-  const resourceImage = ScoreResourceImage.Fields;
-  const calculateScore = React.useCallback(calculateField, []);
-  const [resourceResult, setResourceResult] = React.useState(0);
+  const { calculateItems } = useInitialResourceCalculate();
 
-  return (
-    <View style={styles.container}>
-      <InputScore
-        resourceTitle={resourceTitle}
-        resourceImage={resourceImage}
-        resourceResult={resourceResult}
-        onChangeResourceResult={setResourceResult}
-        calculateScore={calculateScore}
-      />
-    </View>
-  );
+  /**
+   * @TODO
+   * 値が更新されない
+   * TS ignore してる箇所か？
+   */
+  const renderInputScores = (): any => {
+    return calculateItems.map((calculateItem) => {
+      const {
+        resourceTitle,
+        resourceImage,
+        resourceResult,
+        resourceCategoryKey,
+        resourceKey,
+        setResourceResult,
+        calculateScore,
+      } = calculateItem;
+
+      return (
+        <InputScore
+          key={resourceKey}
+          resourceTitle={resourceTitle}
+          resourceImage={resourceImage}
+          resourceResult={resourceResult}
+          onChangeResourceResult={setResourceResult}
+          calculateScore={calculateScore}
+        />
+      );
+    });
+  };
+
+  return <View style={styles.container}>{renderInputScores()}</View>;
 };
 
 const styles = StyleSheet.create({

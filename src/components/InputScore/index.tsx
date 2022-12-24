@@ -13,8 +13,8 @@ export type InputScoreProps = {
   resourceTitle: string;
   resourceImage: string;
   resourceResult: number;
-  onChangeResourceResult: React.Dispatch<React.SetStateAction<number>>;
-  calculateScore: (value: number) => number;
+  onChangeResourceResult: Function;
+  calculateScore: Function;
 };
 
 export const InputScore: React.FC<InputScoreProps> = (props) => {

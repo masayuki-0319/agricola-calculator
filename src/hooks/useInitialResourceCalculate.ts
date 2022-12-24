@@ -66,7 +66,25 @@ type ValueToKey<V extends ScoreResource[keyof ScoreResource]> = {
   [K in keyof ScoreResource]: ScoreResource[K] extends V ? K : never;
 }[keyof ScoreResource];
 
-export const useInitialResourceCalculate: {} = () => {
+type AllResourceCategoryKey<T extends ScoreResource> = T extends Object
+  ? keyof T
+  : never;
+type AllResourceKey<T extends ScoreResource[keyof ScoreResource]> =
+  T extends Object ? keyof T : never;
+
+type CalculateItem = {
+  resourceCategoryKey: AllResourceCategoryKey<ScoreResource>;
+  resourceKey: AllResourceKey<ScoreResource[keyof ScoreResource]>;
+  resourceTitle: string;
+  resourceImage: string;
+  resourceResult: number;
+  calculateScore: Function;
+  setResourceResult: Function;
+};
+
+export const useInitialResourceCalculate = (): {
+  calculateItems: CalculateItem[];
+} => {
   const [resourceResult, setResourceResult] = React.useState<ScoreResource>(
     initialResourceResult
   );
@@ -91,16 +109,18 @@ export const useInitialResourceCalculate: {} = () => {
    * @TODO
    * 全てのリソースに対する定義を追加すること
    */
-  const calculateItems = [
+  const calculateItems: CalculateItem[] = [
     {
       resourceKey: 'field',
+      resourceCategoryKey: 'farmFacility',
       resourceTitle: 'Fields',
       resourceImage: ScoreResourceImage.Fields,
+      resourceResult: resourceResult.farmFacility.field,
       calculateScore: calculateField,
       setResourceResult:
         onChangeResourceResult<FarmFacilityResource>('farmFacility')('field'),
     },
   ];
 
-  return [resourceResult, calculateItems];
+  return { calculateItems };
 };

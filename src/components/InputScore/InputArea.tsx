@@ -8,7 +8,7 @@ import { InputScoreButton } from './InputScoreButton';
 
 type Props = {
   resourceResult: number;
-  setResourceResult: (value: number) => void;
+  setResourceResult: Function;
 };
 
 export const InputArea: React.FC<Props> = (props) => {
