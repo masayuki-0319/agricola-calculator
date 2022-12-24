@@ -58,14 +58,6 @@ const initialResourceResult: ScoreResource = {
   card: initialCard,
 };
 
-/**
- * @Note
- * ScoreResource の Value の型定義から、Key を抽出する
- */
-type ValueToKey<V extends ScoreResource[keyof ScoreResource]> = {
-  [K in keyof ScoreResource]: ScoreResource[K] extends V ? K : never;
-}[keyof ScoreResource];
-
 type AllResourceCategoryKey<T extends ScoreResource> = T extends Object
   ? keyof T
   : never;
@@ -89,25 +81,27 @@ export const useInitialResourceCalculate = (): {
     initialResourceResult
   );
 
-  const onChangeResourceResult =
-    <T extends ScoreResource[keyof ScoreResource]>(
-      resourceCategoryKey: ValueToKey<T>
-    ) =>
-    (resourceKey: keyof ScoreResource[ValueToKey<T>]) =>
-    (inputResourceResult: T[keyof T]) => {
+  /**
+   * @TODO
+   * - 抽象化して、全てのリソースに対応可能とする
+   */
+  const onChangeFarmFacility =
+    (resourceKey: keyof FarmFacilityResource) =>
+    (inputResourceResult: number) => {
       setResourceResult((latest) => {
         return {
           ...latest,
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-expect-error
-          [latest[resourceCategoryKey][resourceKey]]: inputResourceResult,
+          farmFacility: {
+            ...latest.farmFacility,
+            [resourceKey]: inputResourceResult,
+          },
         };
       });
     };
 
   /**
    * @TODO
-   * 全てのリソースに対する定義を追加すること
+   * - 全てのリソースに対する定義を追加する
    */
   const calculateItems: CalculateItem[] = [
     {
@@ -117,8 +111,7 @@ export const useInitialResourceCalculate = (): {
       resourceImage: ScoreResourceImage.Fields,
       resourceResult: resourceResult.farmFacility.field,
       calculateScore: calculateField,
-      setResourceResult:
-        onChangeResourceResult<FarmFacilityResource>('farmFacility')('field'),
+      setResourceResult: onChangeFarmFacility('field'),
     },
   ];
 
