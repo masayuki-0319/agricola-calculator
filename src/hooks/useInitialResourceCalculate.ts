@@ -11,10 +11,7 @@
 
 import React from 'react';
 
-import { ScoreResourceImage } from '../assets';
-
 import {
-  calculateField,
   CardResource,
   FamilyResource,
   FarmFacilityResource,
@@ -58,43 +55,26 @@ const initialResourceResult: ScoreResource = {
   card: initialCard,
 };
 
-type ScoreResourceCategory = ScoreResource[keyof ScoreResource];
-
-type AllResourceCategoryKey<T extends ScoreResource> = T extends Object
-  ? keyof T
-  : never;
-
-type AllResourceKey<T extends ScoreResourceCategory> = T extends Object
-  ? keyof T
-  : never;
+export type ScoreResourceCategory = ScoreResource[keyof ScoreResource];
 
 type ValueToCategoryKey<T extends ScoreResourceCategory> = {
   [K in keyof ScoreResource]: ScoreResource[K] extends T ? K : never;
 }[keyof ScoreResource];
 
-type CalculateItem = {
-  resourceCategoryKey: AllResourceCategoryKey<ScoreResource>;
-  resourceKey: AllResourceKey<ScoreResourceCategory>;
-  resourceTitle: string;
-  resourceImage: string;
-  resourceResult: number;
-  calculateScore: Function;
-  setResourceResult: Function;
-};
+type OnChangeResourceResult = <T extends ScoreResourceCategory>(
+  resourceCategoryKey: ValueToCategoryKey<T>
+) => (resourceKey: keyof T) => (inputResourceResult: number) => void;
 
 export const useInitialResourceCalculate = (): {
-  calculateItems: CalculateItem[];
+  resourceResult: ScoreResource;
+  onChangeResourceResult: OnChangeResourceResult;
 } => {
   const [resourceResult, setResourceResult] = React.useState<ScoreResource>(
     initialResourceResult
   );
 
-  const onChangeResourceResult =
-    <T extends ScoreResourceCategory>(
-      resourceCategoryKey: ValueToCategoryKey<T>
-    ) =>
-    (resourceKey: keyof T) =>
-    (inputResourceResult: number) => {
+  const onChangeResourceResult: OnChangeResourceResult =
+    (resourceCategoryKey) => (resourceKey) => (inputResourceResult) => {
       setResourceResult((latest) => {
         return {
           ...latest,
@@ -106,22 +86,5 @@ export const useInitialResourceCalculate = (): {
       });
     };
 
-  /**
-   * @TODO
-   * - 全てのリソースに対する定義を追加する
-   */
-  const calculateItems: CalculateItem[] = [
-    {
-      resourceKey: 'field',
-      resourceCategoryKey: 'farmFacility',
-      resourceTitle: 'Fields',
-      resourceImage: ScoreResourceImage.Fields,
-      resourceResult: resourceResult.farmFacility.field,
-      calculateScore: calculateField,
-      setResourceResult:
-        onChangeResourceResult<FarmFacilityResource>('farmFacility')('field'),
-    },
-  ];
-
-  return { calculateItems };
+  return { resourceResult, onChangeResourceResult };
 };

@@ -2,40 +2,68 @@ import * as React from 'react';
 
 import { View, StyleSheet } from 'react-native';
 
+import { ScoreResourceImage } from '../assets';
+import { Spacer } from '../components';
 import { InputScore } from '../components/InputScore';
+import {
+  calculateField,
+  FarmFacilityResource,
+} from '../hooks/agricola-score-calculator/src';
 import { useInitialResourceCalculate } from '../hooks/useInitialResourceCalculate';
 
 type Props = {};
 
 export const Home: React.FC<Props> = () => {
-  const { calculateItems } = useInitialResourceCalculate();
+  const { resourceResult, onChangeResourceResult } =
+    useInitialResourceCalculate();
+
+  type CalculateItem = {
+    resourceTitle: string;
+    resourceImage: string;
+    resourceTitleResult: number;
+    calculateScore: Function;
+    setResourceResult: Function;
+  };
 
   /**
    * @TODO
-   * 値が更新されない
-   * TS ignore してる箇所か？
+   * - 全てのリソースに対する定義を追加する
    */
-  const renderInputScores = (): any => {
-    return calculateItems.map((calculateItem) => {
+  const calculateItems: CalculateItem[] = [
+    {
+      resourceTitle: 'Fields',
+      resourceImage: ScoreResourceImage.Fields,
+      resourceTitleResult: resourceResult.farmFacility.field,
+      calculateScore: calculateField,
+      setResourceResult:
+        onChangeResourceResult<FarmFacilityResource>('farmFacility')('field'),
+    },
+  ];
+
+  const renderInputScores = (): React.ReactNode => {
+    return calculateItems.map((calculateItem, index) => {
       const {
         resourceTitle,
         resourceImage,
-        resourceResult,
-        resourceCategoryKey,
-        resourceKey,
+        resourceTitleResult,
         setResourceResult,
         calculateScore,
       } = calculateItem;
 
+      const spacer =
+        index === 0 || index % 2 === 1 ? <Spacer height={30} /> : null;
+
       return (
-        <InputScore
-          key={resourceKey}
-          resourceTitle={resourceTitle}
-          resourceImage={resourceImage}
-          resourceResult={resourceResult}
-          onChangeResourceResult={setResourceResult}
-          calculateScore={calculateScore}
-        />
+        <View key={index}>
+          <InputScore
+            resourceTitle={resourceTitle}
+            resourceImage={resourceImage}
+            resourceResult={resourceTitleResult}
+            onChangeResourceResult={setResourceResult}
+            calculateScore={calculateScore}
+          />
+          {spacer}
+        </View>
       );
     });
   };
