@@ -58,15 +58,23 @@ const initialResourceResult: ScoreResource = {
   card: initialCard,
 };
 
+type ScoreResourceCategory = ScoreResource[keyof ScoreResource];
+
 type AllResourceCategoryKey<T extends ScoreResource> = T extends Object
   ? keyof T
   : never;
-type AllResourceKey<T extends ScoreResource[keyof ScoreResource]> =
-  T extends Object ? keyof T : never;
+
+type AllResourceKey<T extends ScoreResourceCategory> = T extends Object
+  ? keyof T
+  : never;
+
+type ValueToCategoryKey<T extends ScoreResourceCategory> = {
+  [K in keyof ScoreResource]: ScoreResource[K] extends T ? K : never;
+}[keyof ScoreResource];
 
 type CalculateItem = {
   resourceCategoryKey: AllResourceCategoryKey<ScoreResource>;
-  resourceKey: AllResourceKey<ScoreResource[keyof ScoreResource]>;
+  resourceKey: AllResourceKey<ScoreResourceCategory>;
   resourceTitle: string;
   resourceImage: string;
   resourceResult: number;
@@ -81,18 +89,17 @@ export const useInitialResourceCalculate = (): {
     initialResourceResult
   );
 
-  /**
-   * @TODO
-   * - 抽象化して、全てのリソースに対応可能とする
-   */
-  const onChangeFarmFacility =
-    (resourceKey: keyof FarmFacilityResource) =>
+  const onChangeResourceResult =
+    <T extends ScoreResourceCategory>(
+      resourceCategoryKey: ValueToCategoryKey<T>
+    ) =>
+    (resourceKey: keyof T) =>
     (inputResourceResult: number) => {
       setResourceResult((latest) => {
         return {
           ...latest,
-          farmFacility: {
-            ...latest.farmFacility,
+          [resourceCategoryKey]: {
+            ...latest[resourceCategoryKey],
             [resourceKey]: inputResourceResult,
           },
         };
@@ -111,7 +118,8 @@ export const useInitialResourceCalculate = (): {
       resourceImage: ScoreResourceImage.Fields,
       resourceResult: resourceResult.farmFacility.field,
       calculateScore: calculateField,
-      setResourceResult: onChangeFarmFacility('field'),
+      setResourceResult:
+        onChangeResourceResult<FarmFacilityResource>('farmFacility')('field'),
     },
   ];
 
