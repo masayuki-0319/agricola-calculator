@@ -15,6 +15,7 @@ import {
   calculateField,
   calculateGrain,
   calculatePastures,
+  calculateRoom,
   calculateSheep,
   calculateVegetables,
   calculateWildBoar,
@@ -22,6 +23,7 @@ import {
   FamilyResource,
   FarmFacilityResource,
   ProductsResource,
+  ScoreResource,
 } from '../hooks/agricola-score-calculator/src';
 import { useInitialResourceCalculate } from '../hooks/useInitialResourceCalculate';
 
@@ -34,7 +36,7 @@ export const Home: React.FC<Props> = () => {
   type CalculateItem = {
     resourceTitle: string;
     resourceImage: string;
-    resourceTitleResult: number;
+    resourceTitleResult: number | ScoreResource['farmFacility']['room'];
     calculateScore: Function;
     setResourceResult: Function;
   };
@@ -126,14 +128,14 @@ export const Home: React.FC<Props> = () => {
      * @FIXME
      * Room の種類によって出力が分かれるため、他の項目の共通化に不具合あり
      */
-    // {
-    //   resourceTitle: 'Room',
-    //   resourceImage: ScoreResourceImage.ClayRooms,
-    //   resourceTitleResult: resourceResult.farmFacility.room.count,
-    //   calculateScore: calculateRoom,
-    //   setResourceResult:
-    //     onChangeResourceResult<FarmFacilityResource>('farmFacility')('room'),
-    // },
+    {
+      resourceTitle: 'ClayRooms',
+      resourceImage: ScoreResourceImage.ClayRooms,
+      resourceTitleResult: resourceResult.farmFacility.room,
+      calculateScore: calculateRoom,
+      setResourceResult:
+        onChangeResourceResult<FarmFacilityResource>('farmFacility')('room'),
+    },
     {
       resourceTitle: 'Bonus',
       resourceImage: ScoreResourceImage.CardBasePoints,

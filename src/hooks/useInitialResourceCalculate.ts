@@ -26,7 +26,7 @@ const initialFarmRacility: FarmFacilityResource = {
   fancedStable: 0,
   room: {
     type: 'wood',
-    count: 0,
+    count: 2,
   },
 };
 

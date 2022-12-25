@@ -2,12 +2,13 @@ import * as React from 'react';
 
 import { View, StyleSheet } from 'react-native';
 
+import { ScoreResource } from '../../hooks/agricola-score-calculator/src';
 import { Spacer } from '../Spacer';
 import { Typography } from '../Typography';
 
 type Props = {
   resourceTitle: string;
-  resourceResult: number;
+  resourceResult: ScoreResource['farmFacility']['room'];
   calculateScore: Function;
 };
 
@@ -16,9 +17,10 @@ const SCORE_COLOR = 'white';
 const POSITIVE_SCORE_CORE = '#1B3B53';
 const NEGATIVE_SCORE_CORE = '#EF4748';
 
-export const TitleArea: React.FC<Props> = (props) => {
+export const RoomTitleArea: React.FC<Props> = (props) => {
   const { resourceTitle, resourceResult, calculateScore } = props;
 
+  console.log({ resourceResult });
   const score = calculateScore(resourceResult);
 
   return (
