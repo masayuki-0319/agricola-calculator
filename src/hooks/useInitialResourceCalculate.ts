@@ -39,7 +39,7 @@ const initialProducts: ProductsResource = {
 };
 
 const initialFamily: FamilyResource = {
-  familyMember: 0,
+  familyMember: 2,
   beggingCard: 0,
 };
 

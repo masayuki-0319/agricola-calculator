@@ -6,8 +6,22 @@ import { ScoreResourceImage } from '../assets';
 import { Spacer } from '../components';
 import { InputScore } from '../components/InputScore';
 import {
+  calculateBeggingCard,
+  calculateCardBasePoint,
+  calculateCattle,
+  calculateEmtpyFamyard,
+  calculateFamilyMember,
+  calculateFancedStable,
   calculateField,
+  calculateGrain,
+  calculatePastures,
+  calculateSheep,
+  calculateVegetables,
+  calculateWildBoar,
+  CardResource,
+  FamilyResource,
   FarmFacilityResource,
+  ProductsResource,
 } from '../hooks/agricola-score-calculator/src';
 import { useInitialResourceCalculate } from '../hooks/useInitialResourceCalculate';
 
@@ -38,6 +52,120 @@ export const Home: React.FC<Props> = () => {
       setResourceResult:
         onChangeResourceResult<FarmFacilityResource>('farmFacility')('field'),
     },
+    {
+      resourceTitle: 'Pastures',
+      resourceImage: ScoreResourceImage.Pastures,
+      resourceTitleResult: resourceResult.farmFacility.pastures,
+      calculateScore: calculatePastures,
+      setResourceResult:
+        onChangeResourceResult<FarmFacilityResource>('farmFacility')(
+          'pastures'
+        ),
+    },
+    {
+      resourceTitle: 'Grain',
+      resourceImage: ScoreResourceImage.Grain,
+      resourceTitleResult: resourceResult.products.grain,
+      calculateScore: calculateGrain,
+      setResourceResult:
+        onChangeResourceResult<ProductsResource>('products')('grain'),
+    },
+    {
+      resourceTitle: 'Vegetables',
+      resourceImage: ScoreResourceImage.Vegetables,
+      resourceTitleResult: resourceResult.products.vegetables,
+      calculateScore: calculateVegetables,
+      setResourceResult:
+        onChangeResourceResult<ProductsResource>('products')('vegetables'),
+    },
+    {
+      resourceTitle: 'Sheep',
+      resourceImage: ScoreResourceImage.Sheep,
+      resourceTitleResult: resourceResult.products.sheep,
+      calculateScore: calculateSheep,
+      setResourceResult:
+        onChangeResourceResult<ProductsResource>('products')('sheep'),
+    },
+    {
+      resourceTitle: 'WildBoar',
+      resourceImage: ScoreResourceImage.WildBoar,
+      resourceTitleResult: resourceResult.products.wildBoar,
+      calculateScore: calculateWildBoar,
+      setResourceResult:
+        onChangeResourceResult<ProductsResource>('products')('wildBoar'),
+    },
+    {
+      resourceTitle: 'Cattle',
+      resourceImage: ScoreResourceImage.Cattle,
+      resourceTitleResult: resourceResult.products.cattle,
+      calculateScore: calculateCattle,
+      setResourceResult:
+        onChangeResourceResult<ProductsResource>('products')('cattle'),
+    },
+    {
+      resourceTitle: 'EmtpyFamyard',
+      resourceImage: ScoreResourceImage.EmtpyFamyard,
+      resourceTitleResult: resourceResult.farmFacility.emtpyFamyard,
+      calculateScore: calculateEmtpyFamyard,
+      setResourceResult:
+        onChangeResourceResult<FarmFacilityResource>('farmFacility')(
+          'emtpyFamyard'
+        ),
+    },
+    {
+      resourceTitle: 'FancedStable',
+      resourceImage: ScoreResourceImage.FancedStable,
+      resourceTitleResult: resourceResult.farmFacility.fancedStable,
+      calculateScore: calculateFancedStable,
+      setResourceResult:
+        onChangeResourceResult<FarmFacilityResource>('farmFacility')(
+          'fancedStable'
+        ),
+    },
+    /**
+     * @FIXME
+     * Room の種類によって出力が分かれるため、他の項目の共通化に不具合あり
+     */
+    // {
+    //   resourceTitle: 'Room',
+    //   resourceImage: ScoreResourceImage.ClayRooms,
+    //   resourceTitleResult: resourceResult.farmFacility.room.count,
+    //   calculateScore: calculateRoom,
+    //   setResourceResult:
+    //     onChangeResourceResult<FarmFacilityResource>('farmFacility')('room'),
+    // },
+    {
+      resourceTitle: 'Bonus',
+      resourceImage: ScoreResourceImage.CardBasePoints,
+      resourceTitleResult: resourceResult.card.basePoint,
+      calculateScore: calculateCardBasePoint,
+      setResourceResult:
+        onChangeResourceResult<CardResource>('card')('basePoint'),
+    },
+    {
+      resourceTitle: 'End Bonus` From Cards',
+      resourceImage: ScoreResourceImage.CardEndBonus,
+      resourceTitleResult: resourceResult.card.endBonus,
+      calculateScore: calculateCardBasePoint,
+      setResourceResult:
+        onChangeResourceResult<CardResource>('card')('endBonus'),
+    },
+    {
+      resourceTitle: 'FamilyMember',
+      resourceImage: ScoreResourceImage.FamilyMember,
+      resourceTitleResult: resourceResult.family.familyMember,
+      calculateScore: calculateFamilyMember,
+      setResourceResult:
+        onChangeResourceResult<FamilyResource>('family')('familyMember'),
+    },
+    {
+      resourceTitle: 'BeggarCards',
+      resourceImage: ScoreResourceImage.BeggarCards,
+      resourceTitleResult: resourceResult.family.beggingCard,
+      calculateScore: calculateBeggingCard,
+      setResourceResult:
+        onChangeResourceResult<FamilyResource>('family')('beggingCard'),
+    },
   ];
 
   const renderInputScores = (): React.ReactNode => {
@@ -50,9 +178,6 @@ export const Home: React.FC<Props> = () => {
         calculateScore,
       } = calculateItem;
 
-      const spacer =
-        index === 0 || index % 2 === 1 ? <Spacer height={30} /> : null;
-
       return (
         <View key={index}>
           <InputScore
@@ -62,7 +187,7 @@ export const Home: React.FC<Props> = () => {
             onChangeResourceResult={setResourceResult}
             calculateScore={calculateScore}
           />
-          {spacer}
+          <Spacer height={30} />
         </View>
       );
     });
