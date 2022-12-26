@@ -2,7 +2,10 @@ import * as React from 'react';
 
 import { View, StyleSheet } from 'react-native';
 
-import { ScoreResource } from '../../hooks/agricola-score-calculator/src';
+import {
+  calculateRoom,
+  ScoreResource,
+} from '../../hooks/agricola-score-calculator/src';
 import { Spacer } from '../Spacer';
 import { Typography } from '../Typography';
 
@@ -20,8 +23,8 @@ const NEGATIVE_SCORE_CORE = '#EF4748';
 export const RoomTitleArea: React.FC<Props> = (props) => {
   const { resourceTitle, resourceResult, calculateScore } = props;
 
-  console.log({ resourceResult });
-  const score = calculateScore(resourceResult);
+  const calculate = calculateScore as typeof calculateRoom;
+  const score = calculate(resourceResult);
 
   return (
     <View style={styles.container}>
@@ -73,3 +76,9 @@ const styles = StyleSheet.create({
     color: SCORE_COLOR,
   },
 });
+function calculateScore(room: {
+  type: 'wood' | 'cray' | 'stone';
+  count: number;
+}): number {
+  throw new Error('Function not implemented.');
+}

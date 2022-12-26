@@ -9,6 +9,7 @@ import { View, StyleSheet, ImageBackground } from 'react-native';
 import { ScoreResource } from '../../hooks/agricola-score-calculator/src';
 
 import { InputArea } from './InputArea';
+import { RoomInputArea } from './RoomInputArea';
 import { RoomTitleArea } from './RoomTitleArea';
 import { TitleArea } from './TitleArea';
 
@@ -68,7 +69,12 @@ export const InputScore: React.FC<InputScoreProps> = (props) => {
          * - roomt.type 切り替え後、 resourceResult を更新する
          * - room.type に応じた入力 UI を表示する
          */}
-        {isRoom ? null : (
+        {isRoom ? (
+          <RoomInputArea
+            resourceResult={resourceResult}
+            setResourceResult={onChangeResourceResult}
+          />
+        ) : (
           <InputArea
             resourceResult={resourceResult}
             setResourceResult={onChangeResourceResult}
