@@ -14,6 +14,13 @@ export interface FarmFacilityResource {
     type: 'wood' | 'cray' | 'stone';
     count: number;
   };
+  /**
+   * @FIXME
+   * コンポーネント設計が思いつかないため、臨時で設置した
+   * オリジナルも同じ設計だし、とりあえずヨシ！
+   */
+  crayRoom?: number;
+  stoneRoom?: number;
 }
 
 export interface ProductsResource {

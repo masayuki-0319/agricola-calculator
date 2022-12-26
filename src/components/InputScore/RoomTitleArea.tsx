@@ -76,9 +76,3 @@ const styles = StyleSheet.create({
     color: SCORE_COLOR,
   },
 });
-function calculateScore(room: {
-  type: 'wood' | 'cray' | 'stone';
-  count: number;
-}): number {
-  throw new Error('Function not implemented.');
-}

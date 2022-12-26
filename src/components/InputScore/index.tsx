@@ -6,17 +6,15 @@ import React from 'react';
 
 import { View, StyleSheet, ImageBackground } from 'react-native';
 
-import { ScoreResource } from '../../hooks/agricola-score-calculator/src';
+import { calculateRoom } from '../../hooks/agricola-score-calculator/src';
 
 import { InputArea } from './InputArea';
-import { RoomInputArea } from './RoomInputArea';
-import { RoomTitleArea } from './RoomTitleArea';
 import { TitleArea } from './TitleArea';
 
 export type InputScoreProps = {
   resourceTitle: string;
   resourceImage: string;
-  resourceResult: number | ScoreResource['farmFacility']['room'];
+  resourceResult: number;
   onChangeResourceResult: Function;
   calculateScore: Function;
 };
@@ -30,7 +28,12 @@ export const InputScore: React.FC<InputScoreProps> = (props) => {
     calculateScore,
   } = props;
 
-  const isRoom = typeof resourceResult !== 'number';
+  const isCrayRoom =
+    typeof calculateScore === typeof calculateRoom &&
+    resourceTitle === 'ClayRooms';
+  const isStoneRoom =
+    typeof calculateScore === typeof calculateRoom &&
+    resourceTitle === 'StoneRooms';
 
   return (
     <View>
@@ -44,42 +47,22 @@ export const InputScore: React.FC<InputScoreProps> = (props) => {
         >
           <View style={styles.imageFooterArea}>
             <View style={styles.titleArea}>
-              {isRoom ? (
-                <RoomTitleArea
-                  resourceTitle={resourceTitle}
-                  resourceResult={resourceResult}
-                  calculateScore={calculateScore}
-                />
-              ) : (
-                <TitleArea
-                  resourceTitle={resourceTitle}
-                  resourceResult={resourceResult}
-                  calculateScore={calculateScore}
-                />
-              )}
+              <TitleArea
+                resourceTitle={resourceTitle}
+                resourceResult={resourceResult}
+                calculateScore={calculateScore}
+                isCrayRoom={isCrayRoom}
+                isStoneRoom={isStoneRoom}
+              />
             </View>
           </View>
         </ImageBackground>
       </View>
       <View>
-        {/**
-         * @FIXME
-         * CrayRoom と StonesRoom の入力方法を模索
-         * - ユーザが room.type の入力を切り替える
-         * - roomt.type 切り替え後、 resourceResult を更新する
-         * - room.type に応じた入力 UI を表示する
-         */}
-        {isRoom ? (
-          <RoomInputArea
-            resourceResult={resourceResult}
-            setResourceResult={onChangeResourceResult}
-          />
-        ) : (
-          <InputArea
-            resourceResult={resourceResult}
-            setResourceResult={onChangeResourceResult}
-          />
-        )}
+        <InputArea
+          resourceResult={resourceResult}
+          setResourceResult={onChangeResourceResult}
+        />
       </View>
     </View>
   );

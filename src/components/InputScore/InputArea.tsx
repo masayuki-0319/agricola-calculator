@@ -14,6 +14,8 @@ type Props = {
 export const InputArea: React.FC<Props> = (props) => {
   const { resourceResult, setResourceResult } = props;
 
+  console.log({ props });
+
   const onPress = React.useCallback(
     (valueInput: -1 | 1, currentInputScore: number): void => {
       const updateInputText = valueInput + currentInputScore;

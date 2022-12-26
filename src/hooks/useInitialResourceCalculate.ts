@@ -8,7 +8,7 @@ import {
   ScoreResource,
 } from './agricola-score-calculator/src';
 
-const initialFarmRacility: FarmFacilityResource = {
+const initialFarmRacility: NonNullable<FarmFacilityResource> = {
   field: 0,
   pastures: 0,
   emtpyFamyard: 0,
@@ -17,6 +17,8 @@ const initialFarmRacility: FarmFacilityResource = {
     type: 'wood',
     count: 2,
   },
+  crayRoom: 0,
+  stoneRoom: 0,
 };
 
 const initialProducts: ProductsResource = {
