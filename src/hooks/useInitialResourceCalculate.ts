@@ -1,14 +1,3 @@
-/**
- * @目的
- * - 全ての Resource を計算できるような hooks を用意する
- *
- * @TODO
- * - 返却する型を定義する
- * - 必要な外部リソースの型を定義する
- * - 一つの Resource を返せるようにする
- * - 全ての Resource を返せるようにする
- */
-
 import React from 'react';
 
 import {
