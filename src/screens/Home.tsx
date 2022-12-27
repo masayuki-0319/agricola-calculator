@@ -1,3 +1,18 @@
+/**
+ * @TODO
+ * # (1) リファクタリング
+ * - room の calculateScore は、 UI コンポーネント先で、特有の処理を実装しているため、 Home.tsx 内に処理をおさめる
+ *
+ * # (2) 全ての計算結果の合計値を表示する
+ * - Figma で、モーダル表示をデザインする
+ * - モーダルを表示させる
+ *  - 画面の最下部にボタン設置
+ *  - ボタン押下により、モーダル表示
+ * - モーダルに、入力データに基づく計算結果を表示する
+ *
+ * # (3) Web に公開する
+ * - GitHub Pages で公開する
+ */
 import * as React from 'react';
 
 import { View, StyleSheet } from 'react-native';
