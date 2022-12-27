@@ -2,6 +2,7 @@
  * @TODO
  * # (1) リファクタリング・未実装箇所
  * - room の calculateScore は、 UI コンポーネント先で、特有の処理を実装しているため、 Home.tsx 内に処理をおさめる
+ * - Home.tsx 内の細かい処理は、 home/hook.ts, home/page.tsx のようにして、処理を切り離す
  * - Header の画像が、オリジナルと異なるため、位置を調整する
  * - inputScore の数値が、 0より上の時に色が薄いため、色をつける
  * - Footer に対して、オリジナルの URL を表示する
