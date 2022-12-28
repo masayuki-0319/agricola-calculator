@@ -15,6 +15,11 @@
  *
  * # (3) Web に公開する
  * - GitHub Pages で公開する
+ *
+ * # 修正案
+ * - レイヤの追加を検討する
+ *   - room 特有処理の問題を解決する
+ *   - アーキテクチャは MVVM ？
  */
 import * as React from 'react';
 
