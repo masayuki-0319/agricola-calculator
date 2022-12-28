@@ -150,7 +150,8 @@ export const Home: React.FC<Props> = () => {
       resourceTitle: 'ClayRooms',
       resourceImage: ScoreResourceImage.ClayRooms,
       resourceTitleResult: resourceResult.farmFacility.crayRoom as number,
-      calculateScore: calculateRoom,
+      calculateScore: (inputScore: number) =>
+        calculateRoom({ type: 'cray', count: inputScore }),
       setResourceResult:
         onChangeResourceResult<FarmFacilityResource>('farmFacility')(
           'crayRoom'
@@ -160,7 +161,8 @@ export const Home: React.FC<Props> = () => {
       resourceTitle: 'StoneRooms',
       resourceImage: ScoreResourceImage.StoneRooms,
       resourceTitleResult: resourceResult.farmFacility.stoneRoom as number,
-      calculateScore: calculateRoom,
+      calculateScore: (inputScore: number) =>
+        calculateRoom({ type: 'stone', count: inputScore }),
       setResourceResult:
         onChangeResourceResult<FarmFacilityResource>('farmFacility')(
           'stoneRoom'

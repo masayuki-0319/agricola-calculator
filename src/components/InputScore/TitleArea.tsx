@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { View, StyleSheet } from 'react-native';
 
-import { calculateRoom } from '../../hooks/agricola-score-calculator/src';
 import { Spacer } from '../Spacer';
 import { Typography } from '../Typography';
 
@@ -10,8 +9,6 @@ type Props = {
   resourceTitle: string;
   resourceResult: number;
   calculateScore: Function;
-  isCrayRoom: boolean;
-  isStoneRoom: boolean;
 };
 
 const RESOURCE_TITLE_COLOR = '#CFCBC0';
@@ -20,26 +17,9 @@ const POSITIVE_SCORE_CORE = '#1B3B53';
 const NEGATIVE_SCORE_CORE = '#EF4748';
 
 export const TitleArea: React.FC<Props> = (props) => {
-  const {
-    resourceTitle,
-    resourceResult,
-    calculateScore,
-    isCrayRoom,
-    isStoneRoom,
-  } = props;
+  const { resourceTitle, resourceResult, calculateScore } = props;
 
-  let score;
-  try {
-    if (isCrayRoom) {
-      score = calculateRoom({ type: 'cray', count: resourceResult });
-    } else if (isStoneRoom) {
-      score = calculateRoom({ type: 'stone', count: resourceResult });
-    } else {
-      score = calculateScore(resourceResult);
-    }
-  } catch (error) {
-    console.error(error);
-  }
+  const score = calculateScore(resourceResult);
 
   return (
     <View style={styles.container}>

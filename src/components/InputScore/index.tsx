@@ -6,8 +6,6 @@ import React from 'react';
 
 import { View, StyleSheet, ImageBackground } from 'react-native';
 
-import { calculateRoom } from '../../hooks/agricola-score-calculator/src';
-
 import { InputArea } from './InputArea';
 import { TitleArea } from './TitleArea';
 
@@ -28,13 +26,6 @@ export const InputScore: React.FC<InputScoreProps> = (props) => {
     calculateScore,
   } = props;
 
-  const isCrayRoom =
-    typeof calculateScore === typeof calculateRoom &&
-    resourceTitle === 'ClayRooms';
-  const isStoneRoom =
-    typeof calculateScore === typeof calculateRoom &&
-    resourceTitle === 'StoneRooms';
-
   return (
     <View>
       <View style={styles.resourceImageArea}>
@@ -51,8 +42,6 @@ export const InputScore: React.FC<InputScoreProps> = (props) => {
                 resourceTitle={resourceTitle}
                 resourceResult={resourceResult}
                 calculateScore={calculateScore}
-                isCrayRoom={isCrayRoom}
-                isStoneRoom={isStoneRoom}
               />
             </View>
           </View>
