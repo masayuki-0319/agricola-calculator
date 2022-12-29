@@ -5,14 +5,9 @@ import { View, ImageBackground, StyleSheet } from 'react-native';
 import { ProductImage } from '../../assets';
 import { Typography } from '../Typography';
 
-type Props = {};
+export const Footer: React.FC = () => {
+  const originalURL = 'https://mattbru.me/tools/agricola-score-calculator/';
 
-/**
- * @FIXME
- * Footer を画面の最下部に接地させること
- * @See https://scrapbox.io/momomo/ReactNative_%E3%81%A7%E7%94%BB%E5%83%8F%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B
- */
-export const Footer: React.FC<Props> = () => {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -21,24 +16,40 @@ export const Footer: React.FC<Props> = () => {
         imageStyle={styles.imageStyle}
       >
         <View>
-          <Typography text='first' style={styles.text} />
+          <Typography
+            text='Clone Agricola Score Calculator'
+            style={styles.text}
+          />
+          <a
+            href={originalURL}
+            style={styles.text}
+            target='_blank'
+            rel='noreferrer'
+          >
+            <Typography text={'Original Website'} style={styles.text} />
+          </a>
         </View>
       </ImageBackground>
     </View>
   );
 };
 
+const FOOTER_TEXT_COLOR = '#837ea1';
+
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+  },
   backgroundImage: {
-    height: 100,
+    height: 90,
+    paddingTop: 30,
   },
   imageStyle: {
     resizeMode: 'repeat',
   },
   text: {
     textAlign: 'center',
-    fontSize: 20,
-    color: 'white',
+    fontSize: 12,
+    color: FOOTER_TEXT_COLOR,
   },
 });
