@@ -20,7 +20,7 @@ import {
 } from '../hooks/agricola-score-calculator/src';
 import { useInitialResourceCalculate } from '../hooks/useInitialResourceCalculate';
 
-type CalculateItem = {
+export type CalculateItem = {
   resourceTitle: string;
   resourceImage: string;
   resourceTitleResult: number;

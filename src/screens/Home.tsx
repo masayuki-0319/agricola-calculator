@@ -17,42 +17,21 @@ import * as React from 'react';
 
 import { View, StyleSheet } from 'react-native';
 
-import { Spacer } from '../components';
-import { InputScore } from '../components/InputScore';
-
 import { useCalculateItems } from './hooks';
+import { InputArea } from './ui/InputArea';
 
 type Props = {};
 
 export const Home: React.FC<Props> = () => {
   const { calculateItems } = useCalculateItems();
 
-  const renderInputScores = (): React.ReactNode => {
-    return calculateItems.map((calculateItem, index) => {
-      const {
-        resourceTitle,
-        resourceImage,
-        resourceTitleResult,
-        setResourceResult,
-        calculateScore,
-      } = calculateItem;
-
-      return (
-        <View key={index}>
-          <InputScore
-            resourceTitle={resourceTitle}
-            resourceImage={resourceImage}
-            resourceResult={resourceTitleResult}
-            onChangeResourceResult={setResourceResult}
-            calculateScore={calculateScore}
-          />
-          <Spacer height={30} />
-        </View>
-      );
-    });
-  };
-
-  return <View style={styles.container}>{renderInputScores()}</View>;
+  return (
+    <View style={styles.container}>
+      <View>
+        <InputArea calculateItems={calculateItems} />
+      </View>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
