@@ -1,5 +1,6 @@
 {
   "name": "agricola-calculator",
+  "homepage": "https://masayuki-0319.github.io/agricola-calculator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
