@@ -17,6 +17,7 @@ import {
   calculateFamilyMember,
   FamilyResource,
   calculateBeggingCard,
+  ScoreResource,
 } from '../hooks/agricola-score-calculator/src';
 import { useInitialResourceCalculate } from '../hooks/useInitialResourceCalculate';
 
@@ -28,7 +29,10 @@ export type CalculateItem = {
   setResourceResult: Function;
 };
 
-export const useCalculateItems = (): { calculateItems: CalculateItem[] } => {
+export const useCalculateItems = (): {
+  resourceResult: ScoreResource;
+  calculateItems: CalculateItem[];
+} => {
   const { resourceResult, onChangeResourceResult } =
     useInitialResourceCalculate();
 
@@ -171,5 +175,5 @@ export const useCalculateItems = (): { calculateItems: CalculateItem[] } => {
     },
   ];
 
-  return { calculateItems };
+  return { resourceResult, calculateItems };
 };
