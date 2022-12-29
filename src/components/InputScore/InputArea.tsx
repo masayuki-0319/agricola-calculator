@@ -33,7 +33,16 @@ export const InputArea: React.FC<Props> = (props) => {
         </InputScoreButton>
       </View>
       <View style={styles.inputTextArea}>
-        <Typography text={resourceResult} style={styles.inputText} />
+        <Typography
+          text={resourceResult}
+          style={[
+            styles.inputText,
+            {
+              color:
+                resourceResult === 0 ? ZERO_SCORE_COLOR : POSITIVE_SCORE_COLOR,
+            },
+          ]}
+        />
       </View>
       <View style={styles.changeTextArea}>
         <InputScoreButton onPress={() => onPress(1, resourceResult)}>
@@ -45,6 +54,8 @@ export const InputArea: React.FC<Props> = (props) => {
 };
 
 const CHANGE_TEXT_AREA_COLOR = '#315B7A';
+const POSITIVE_SCORE_COLOR = '#B4AE95';
+const ZERO_SCORE_COLOR = CHANGE_TEXT_AREA_COLOR;
 const CHANGE_TEXT_COLOR = '#CFCBB0';
 const INPUT_AREA_COLOR = '#163448';
 
