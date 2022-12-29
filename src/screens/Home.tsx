@@ -1,8 +1,5 @@
 /**
  * @TODO
- * # (2) 全ての計算結果の合計値を表示する
- * - モーダルに対して、入力データに基づく計算結果を表示する
- *
  * # (3) Web に公開する
  * - GitHub Pages で公開する
  *
@@ -22,7 +19,7 @@ import { InputArea } from './ui/InputArea';
 type Props = {};
 
 export const Home: React.FC<Props> = () => {
-  const { calculateItems } = useCalculateItems();
+  const { resourceResult, calculateItems } = useCalculateItems();
 
   return (
     <View style={styles.container}>
@@ -30,7 +27,7 @@ export const Home: React.FC<Props> = () => {
         <InputArea calculateItems={calculateItems} />
       </View>
       <View>
-        <CalculateButton />
+        <CalculateButton resourceResult={resourceResult} />
       </View>
     </View>
   );

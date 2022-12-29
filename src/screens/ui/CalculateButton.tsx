@@ -3,30 +3,45 @@ import * as React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { Typography } from '../../components/Typography';
-import { ScoreResource } from '../../hooks/agricola-score-calculator/src';
+import {
+  calculateAllScore,
+  ScoreResource,
+} from '../../hooks/agricola-score-calculator/src';
 
 export type Props = {
-  resourceResult?: ScoreResource;
+  resourceResult: ScoreResource;
 };
 
 export const CalculateButton: React.FC<Props> = (props) => {
   const { resourceResult } = props;
 
-  const [showScore, setShowScore] = React.useState(false);
+  const [allScore, setAllScore] = React.useState(0);
+  const onPressCalculateScore = (): void => {
+    const score = calculateAllScore(resourceResult);
 
-  const onPressShowScore = (): void => setShowScore((latest) => !latest);
+    setAllScore(score);
+  };
+
+  const [showScore, setShowScore] = React.useState(false);
+  const onPressShowScore = (): void => {
+    onPressCalculateScore();
+    setShowScore(true);
+  };
 
   return (
     <View>
       <TouchableOpacity onPress={onPressShowScore} activeOpacity={1}>
         <View style={styles.buttonArea}>
-          <Typography text='CALCULATE MY SCORE' style={styles.buttonText} />
+          <Typography
+            text={showScore ? 'ReCALCULATE MY SCORE' : 'CALCULATE MY SCORE'}
+            style={styles.buttonText}
+          />
         </View>
       </TouchableOpacity>
 
       {showScore ? (
         <View>
-          <Typography text={16} style={styles.resultText} />
+          <Typography text={allScore} style={styles.resultText} />
         </View>
       ) : null}
     </View>
