@@ -25,15 +25,15 @@ export const Header: React.FC<Props> = () => {
 };
 const styles = StyleSheet.create({
   backgroundImageArea: {
-    height: 150,
+    height: 130,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   backgroundImageStyle: {
     resizeMode: 'repeat',
   },
   imageStyle: {
-    height: 100,
+    height: 110,
     flexGrow: 1,
   },
 });
